@@ -37,8 +37,10 @@ class ChatUITextField extends StatelessWidget {
   final TextEditingController textEditingController;
   final VoidCallBack onPressed;
   final _outLineBorder = OutlineInputBorder(
-    borderSide: const BorderSide(color: Colors.transparent),
-    borderRadius: BorderRadius.circular(27),
+    borderSide: BorderSide(
+      width: 2.0,
+      color: Color(0xFFc8d2da),
+    ),
   );
 
   @override
@@ -46,20 +48,19 @@ class ChatUITextField extends StatelessWidget {
     return TextField(
       focusNode: focusNode,
       controller: textEditingController,
-      style:
-          sendMessageConfig?.textStyle ?? const TextStyle(color: Colors.white),
+      style: sendMessageConfig?.textStyle ?? const TextStyle(color: Colors.white),
       maxLines: 5,
       minLines: 1,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         suffixIcon: IconButton(
-          color: sendMessageConfig?.defaultSendButtonColor ?? Colors.green,
+          color: sendMessageConfig?.defaultSendButtonColor ?? const Color(0xFF6857fe),
           onPressed: onPressed,
           icon: sendMessageConfig?.sendButtonIcon ?? const Icon(Icons.send),
         ),
         hintText: sendMessageConfig?.hintText ?? PackageStrings.message,
         fillColor: sendMessageConfig?.textFieldBackgroundColor ?? Colors.white,
-        filled: true,
+        filled: false,
         hintStyle: sendMessageConfig?.hintStyle ??
             TextStyle(
               fontSize: 16,
@@ -75,7 +76,7 @@ class ChatUITextField extends StatelessWidget {
         focusedBorder: _outLineBorder,
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.transparent),
-          borderRadius: BorderRadius.circular(29),
+          // borderRadius: BorderRadius.circular(29),
         ),
       ),
     );

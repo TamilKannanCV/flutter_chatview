@@ -17,8 +17,7 @@ class Example extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: const Color(0xffEE5366),
-        colorScheme:
-            ColorScheme.fromSwatch(accentColor: const Color(0xffEE5366)),
+        colorScheme: ColorScheme.fromSwatch(accentColor: const Color(0xffEE5366)),
       ),
       home: const ChatScreen(),
     );
@@ -48,6 +47,7 @@ class _ChatScreenState extends State<ChatScreen> {
       body: ChatView(
         sender: sender,
         receiver: receiver,
+        
         chatController: _chatController,
         onSendTap: _onSendTap,
         typeIndicatorConfig: TypeIndicatorConfiguration(
@@ -72,9 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
             IconButton(
               onPressed: _onThemeIconTap,
               icon: Icon(
-                isDarkTheme
-                    ? Icons.brightness_4_outlined
-                    : Icons.dark_mode_outlined,
+                isDarkTheme ? Icons.brightness_4_outlined : Icons.dark_mode_outlined,
                 color: theme.themeIconColor,
               ),
             ),
@@ -107,7 +105,7 @@ class _ChatScreenState extends State<ChatScreen> {
               bodyStyle: theme.outgoingChatLinkBodyStyle,
               titleStyle: theme.outgoingChatLinkTitleStyle,
             ),
-            color: theme.outgoingChatBubbleColor,
+            color: const Color(0xFFccd8e1),
           ),
           inComingChatBubbleConfig: ChatBubble(
             linkPreviewConfig: LinkPreviewConfiguration(
@@ -120,7 +118,7 @@ class _ChatScreenState extends State<ChatScreen> {
               titleStyle: theme.incomingChatLinkTitleStyle,
             ),
             textStyle: TextStyle(color: theme.inComingChatBubbleTextColor),
-            color: theme.inComingChatBubbleColor,
+            color: const Color(0xFFffc203),
           ),
         ),
         replyPopupConfig: ReplyPopupConfiguration(
@@ -148,8 +146,7 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
         ),
-        profileCircleConfig:
-            ProfileCircleConfiguration(profileImageUrl: Data.profileImage),
+        profileCircleConfig: ProfileCircleConfiguration(profileImageUrl: Data.profileImage),
         repliedMessageConfig: RepliedMessageConfiguration(
           backgroundColor: theme.repliedMessageColor,
           verticalBarColor: theme.verticalBarColor,

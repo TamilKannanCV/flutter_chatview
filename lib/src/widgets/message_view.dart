@@ -126,6 +126,7 @@ class _MessageViewState extends State<MessageView>
                           messageReactionConfig: widget.messageReactionConfig,
                         )
                       : TextMessageView(
+                        
                           inComingChatBubbleConfig:
                               widget.inComingChatBubbleConfig,
                           outgoingChatBubbleConfig:

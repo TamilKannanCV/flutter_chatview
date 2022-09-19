@@ -53,20 +53,16 @@ class TextMessageView extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          constraints: BoxConstraints(
-              maxWidth: chatBubbleMaxWidth ??
-                  MediaQuery.of(context).size.width * 0.75),
+          constraints: BoxConstraints(maxWidth: chatBubbleMaxWidth ?? MediaQuery.of(context).size.width * 0.75),
           padding: _padding ??
               const EdgeInsets.symmetric(
                 horizontal: 12,
                 vertical: 10,
               ),
-          margin: _margin ??
-              EdgeInsets.fromLTRB(
-                  5, 0, 6, message.reaction.isNotEmpty ? 15 : 2),
+          margin: _margin ?? EdgeInsets.fromLTRB(5, 0, 6, message.reaction.isNotEmpty ? 15 : 2),
           decoration: BoxDecoration(
-            color: _color,
-            borderRadius: _borderRadius(_textMessage),
+            color: _color.withOpacity(0.4),
+            border: Border.all(color: _color, width: 1.5),
           ),
           child: _textMessage.isUrl
               ? LinkPreview(
@@ -77,7 +73,7 @@ class TextMessageView extends StatelessWidget {
                   _textMessage,
                   style: _textStyle ??
                       textTheme.bodyText2!.copyWith(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 16,
                       ),
                 ),
@@ -92,33 +88,17 @@ class TextMessageView extends StatelessWidget {
     );
   }
 
-  EdgeInsetsGeometry? get _padding => isMessageBySender
-      ? outgoingChatBubbleConfig?.padding
-      : inComingChatBubbleConfig?.padding;
+  EdgeInsetsGeometry? get _padding => isMessageBySender ? outgoingChatBubbleConfig?.padding : inComingChatBubbleConfig?.padding;
 
-  EdgeInsetsGeometry? get _margin => isMessageBySender
-      ? outgoingChatBubbleConfig?.margin
-      : inComingChatBubbleConfig?.margin;
+  EdgeInsetsGeometry? get _margin => isMessageBySender ? outgoingChatBubbleConfig?.margin : inComingChatBubbleConfig?.margin;
 
-  LinkPreviewConfiguration? get _linkPreviewConfig => isMessageBySender
-      ? outgoingChatBubbleConfig?.linkPreviewConfig
-      : inComingChatBubbleConfig?.linkPreviewConfig;
+  LinkPreviewConfiguration? get _linkPreviewConfig => isMessageBySender ? outgoingChatBubbleConfig?.linkPreviewConfig : inComingChatBubbleConfig?.linkPreviewConfig;
 
-  TextStyle? get _textStyle => isMessageBySender
-      ? outgoingChatBubbleConfig?.textStyle
-      : inComingChatBubbleConfig?.textStyle;
+  TextStyle? get _textStyle => isMessageBySender ? outgoingChatBubbleConfig?.textStyle : inComingChatBubbleConfig?.textStyle;
 
   BorderRadiusGeometry _borderRadius(String message) => isMessageBySender
-      ? outgoingChatBubbleConfig?.borderRadius ??
-          (message.length < 37
-              ? BorderRadius.circular(replyBorderRadius1)
-              : BorderRadius.circular(replyBorderRadius2))
-      : inComingChatBubbleConfig?.borderRadius ??
-          (message.length < 29
-              ? BorderRadius.circular(replyBorderRadius1)
-              : BorderRadius.circular(replyBorderRadius2));
+      ? outgoingChatBubbleConfig?.borderRadius ?? (message.length < 37 ? BorderRadius.circular(replyBorderRadius1) : BorderRadius.circular(replyBorderRadius2))
+      : inComingChatBubbleConfig?.borderRadius ?? (message.length < 29 ? BorderRadius.circular(replyBorderRadius1) : BorderRadius.circular(replyBorderRadius2));
 
-  Color get _color => isMessageBySender
-      ? outgoingChatBubbleConfig?.color ?? Colors.purple
-      : inComingChatBubbleConfig?.color ?? Colors.grey.shade500;
+  Color get _color => isMessageBySender ? outgoingChatBubbleConfig?.color ?? Colors.purple : inComingChatBubbleConfig?.color ?? Colors.grey.shade500;
 }

@@ -60,9 +60,7 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
   ReplyMessage _replyMessage = ReplyMessage();
   final _focusNode = FocusNode();
 
-  String get _replyTo => _replyMessage.replyTo == widget.sender.id
-      ? PackageStrings.you
-      : widget.receiver.name;
+  String get _replyTo => _replyMessage.replyTo == widget.sender.id ? PackageStrings.you : widget.receiver.name;
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +82,7 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
                     left: 0,
                     bottom: 0,
                     child: Container(
-                      height: MediaQuery.of(context).size.height /
-                          ((!kIsWeb && Platform.isIOS) ? 24 : 28),
+                      height: MediaQuery.of(context).size.height / ((!kIsWeb && Platform.isIOS) ? 24 : 28),
                       color: widget.backgroundColor ?? Colors.white,
                     ),
                   ),
@@ -102,11 +99,8 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
                         if (_replyMessage.message.isNotEmpty)
                           Container(
                             decoration: BoxDecoration(
-                              color: widget.sendMessageConfig
-                                      ?.textFieldBackgroundColor ??
-                                  Colors.white,
-                              borderRadius: const BorderRadius.vertical(
-                                  top: Radius.circular(14)),
+                              color: widget.sendMessageConfig?.textFieldBackgroundColor ?? Colors.white,
+                              borderRadius: const BorderRadius.vertical(top: Radius.circular(14)),
                             ),
                             margin: const EdgeInsets.only(
                               bottom: 17,
@@ -126,25 +120,20 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
                                 horizontal: 6,
                               ),
                               decoration: BoxDecoration(
-                                color: widget
-                                        .sendMessageConfig?.replyDialogColor ??
-                                    Colors.grey.shade200,
-                                borderRadius: BorderRadius.circular(12),
+                                color: widget.sendMessageConfig?.replyDialogColor ?? Colors.grey.shade200,
+                                border: Border.all(),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         "${PackageStrings.replyTo} $_replyTo",
                                         style: TextStyle(
-                                          color: widget.sendMessageConfig
-                                                  ?.replyTitleColor ??
-                                              Colors.deepPurple,
+                                          color: widget.sendMessageConfig?.replyTitleColor ?? Colors.deepPurple,
                                           fontWeight: FontWeight.bold,
                                           letterSpacing: 0.25,
                                         ),
@@ -154,9 +143,7 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
                                         padding: EdgeInsets.zero,
                                         icon: Icon(
                                           Icons.close,
-                                          color: widget.sendMessageConfig
-                                                  ?.closeIconColor ??
-                                              Colors.black,
+                                          color: widget.sendMessageConfig?.closeIconColor ?? Colors.black,
                                           size: 16,
                                         ),
                                         onPressed: _onCloseTap,
@@ -169,16 +156,12 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
                                             Icon(
                                               Icons.photo,
                                               size: 20,
-                                              color: widget.sendMessageConfig
-                                                      ?.replyMessageColor ??
-                                                  Colors.grey.shade700,
+                                              color: widget.sendMessageConfig?.replyMessageColor ?? Colors.grey.shade700,
                                             ),
                                             Text(
                                               PackageStrings.photo,
                                               style: TextStyle(
-                                                color: widget.sendMessageConfig
-                                                        ?.replyMessageColor ??
-                                                    Colors.black,
+                                                color: widget.sendMessageConfig?.replyMessageColor ?? Colors.black,
                                               ),
                                             ),
                                           ],
@@ -189,9 +172,7 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                             fontSize: 12,
-                                            color: widget.sendMessageConfig
-                                                    ?.replyMessageColor ??
-                                                Colors.black,
+                                            color: widget.sendMessageConfig?.replyMessageColor ?? Colors.black,
                                           ),
                                         ),
                                 ],
@@ -214,8 +195,7 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
   }
 
   void _onPressed() {
-    if (_textEditingController.text.isNotEmpty &&
-        !_textEditingController.text.startsWith('\n')) {
+    if (_textEditingController.text.isNotEmpty && !_textEditingController.text.startsWith('\n')) {
       widget.onSendTap(_textEditingController.text, _replyMessage);
       if (_replyMessage.message.isNotEmpty) {
         setState(() => _replyMessage = ReplyMessage());
