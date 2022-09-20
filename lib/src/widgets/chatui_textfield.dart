@@ -74,10 +74,7 @@ class ChatUITextField extends StatelessWidget {
         ),
         border: _outLineBorder,
         focusedBorder: _outLineBorder,
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.transparent),
-          // borderRadius: BorderRadius.circular(29),
-        ),
+        enabledBorder: _outLineBorder,
       ),
     );
   }
