@@ -48,7 +48,7 @@ class ChatUITextField extends StatelessWidget {
     return TextField(
       focusNode: focusNode,
       controller: textEditingController,
-      style: sendMessageConfig?.textStyle ?? const TextStyle(color: Colors.white),
+      style: sendMessageConfig?.textStyle ?? const TextStyle(color: Colors.black),
       maxLines: 5,
       minLines: 1,
       textCapitalization: TextCapitalization.sentences,
