@@ -60,7 +60,7 @@ class ChatUITextField extends StatelessWidget {
         ),
         hintText: sendMessageConfig?.hintText ?? PackageStrings.message,
         fillColor: sendMessageConfig?.textFieldBackgroundColor ?? Colors.white,
-        filled: false,
+        filled: true,
         hintStyle: sendMessageConfig?.hintStyle ??
             TextStyle(
               fontSize: 16,
