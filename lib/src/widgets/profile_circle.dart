@@ -19,6 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:chatview/src/utils/constants.dart';
 
@@ -42,7 +43,7 @@ class ProfileCircle extends StatelessWidget {
           EdgeInsets.only(left: 6.0, right: 4, bottom: bottomPadding),
       child: CircleAvatar(
         radius: circleRadius ?? 16,
-        backgroundImage: NetworkImage(imageUrl ?? profileImage),
+        backgroundImage: CachedNetworkImageProvider(imageUrl ?? profileImage),
       ),
     );
   }
