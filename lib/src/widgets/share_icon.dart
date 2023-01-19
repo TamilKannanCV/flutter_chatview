@@ -35,17 +35,14 @@ class ShareIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () => shareIconConfig?.onPressed != null
-          ? shareIconConfig?.onPressed!(imageUrl)
-          : null,
+      onPressed: () => shareIconConfig?.onPressed != null ? shareIconConfig?.onPressed!(imageUrl) : null,
       padding: shareIconConfig?.margin ?? const EdgeInsets.all(8.0),
       icon: shareIconConfig?.icon ??
           Container(
             alignment: Alignment.center,
             padding: shareIconConfig?.padding ?? const EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: shareIconConfig?.defaultIconBackgroundColor ??
-                  Colors.grey.shade300,
+              color: shareIconConfig?.defaultIconBackgroundColor ?? Colors.grey.shade300,
               shape: BoxShape.circle,
             ),
             child: Icon(

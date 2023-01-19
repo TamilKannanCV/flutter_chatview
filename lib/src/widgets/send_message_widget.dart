@@ -182,7 +182,8 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
                         ChatUITextField(
                           focusNode: _focusNode,
                           textEditingController: _textEditingController,
-                          onPressed: _onPressed,
+                          onSendPressed: _onSendPressed,
+                          onCameraPressed: _onCameraPressed,
                           sendMessageConfig: widget.sendMessageConfig,
                         )
                       ],
@@ -194,7 +195,7 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
           );
   }
 
-  void _onPressed() {
+  void _onSendPressed() {
     if (_textEditingController.text.isNotEmpty && !_textEditingController.text.startsWith('\n')) {
       widget.onSendTap(_textEditingController.text, _replyMessage);
       if (_replyMessage.message.isNotEmpty) {
@@ -202,6 +203,10 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
       }
       _textEditingController.clear();
     }
+  }
+
+  void _onCameraPressed() {
+    //TODO:Need to be implemeted
   }
 
   void assignReplyMessage(Message message) {

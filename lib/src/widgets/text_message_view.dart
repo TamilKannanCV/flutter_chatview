@@ -61,8 +61,8 @@ class TextMessageView extends StatelessWidget {
               ),
           margin: _margin ?? EdgeInsets.fromLTRB(5, 0, 6, message.reaction.isNotEmpty ? 15 : 2),
           decoration: BoxDecoration(
-            color: _color.withOpacity(0.4),
-            border: Border.all(color: _color, width: 1.5),
+            color: _color.withOpacity(0.4), borderRadius: BorderRadius.circular(50.0),
+            // border: Border.all(color: _color, width: 1.5),
           ),
           child: _textMessage.isUrl
               ? LinkPreview(
