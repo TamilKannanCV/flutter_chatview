@@ -22,6 +22,7 @@
 import 'dart:io' if (kIsWeb) 'dart:html';
 import 'dart:ui';
 import 'package:chatview/src/widgets/chatui_textfield.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:chatview/chatview.dart';
@@ -41,6 +42,7 @@ class SendMessageWidget extends StatefulWidget {
     this.sendMessageBuilder,
     this.onReplyCallback,
     this.onReplyCloseCallback,
+    this.onCameraPressed,
   }) : super(key: key);
   final StringMessageCallBack onSendTap;
   final ChatUser sender;
@@ -50,6 +52,7 @@ class SendMessageWidget extends StatefulWidget {
   final ReplyMessageWithReturnWidget? sendMessageBuilder;
   final ReplyMessageCallBack? onReplyCallback;
   final VoidCallBack? onReplyCloseCallback;
+  final void Function(File pickedFile)? onCameraPressed;
 
   @override
   State<SendMessageWidget> createState() => SendMessageWidgetState();
@@ -205,8 +208,14 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
     }
   }
 
-  void _onCameraPressed() {
-    //TODO:Need to be implemeted
+  void _onCameraPressed() async {
+    final result = await FilePicker.platform.pickFiles(type: FileType.image);
+    if (result == null) {
+      return;
+    }
+    final file = File("${result.files.first.path}");
+
+    widget.onCameraPressed?.call(file);
   }
 
   void assignReplyMessage(Message message) {
