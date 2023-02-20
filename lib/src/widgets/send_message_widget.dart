@@ -216,6 +216,7 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
     final file = File("${result.files.first.path}");
 
     widget.onCameraPressed?.call(file);
+    
   }
 
   void assignReplyMessage(Message message) {

@@ -91,7 +91,7 @@ class ChatUITextField extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: onCameraPressed,
                   icon: const Icon(
                     Icons.camera_alt_outlined,
                     color: Color(0xFF838383),
